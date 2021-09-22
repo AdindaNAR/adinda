@@ -22,7 +22,7 @@
 	echo "<br>";
 	echo "Nomor : 125 ";
 	echo "<br>";
-	echo "Perihal : Surat Permohonan";
+	echo "Perihal : Permohonan Peminjaman Barang";
 	echo "<br>";
 	echo "Kepada :";
 	echo "<br>";
