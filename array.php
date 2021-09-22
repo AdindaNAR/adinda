@@ -4,15 +4,7 @@
 	<title>Belajar Array PHP</title>
 </head>
 <body>
-<<<<<<< Updated upstream
-	<?php 
-		 
-		$biodata['nama'] = "Adinda Nur Aulia Rizki";
-		$biodata['kelas'] = "MI20B";
-		$biodata['alamat'] = "Tasikmalaya";
-		$biodata['asal'] = "LP3I";
-		 
-=======
+
 	<h1>My Biodata</h1>
 
 	<?php    
@@ -24,7 +16,7 @@
 	);
 	$matakuliah = array('Web Programming', 'English for Special Purpose','Java Programming','Network Operating System');
  
->>>>>>> Stashed changes
+
 
 	echo $biodata['nama'];
 	echo "<br>";
