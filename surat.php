@@ -29,6 +29,9 @@
 	echo "<br>";
 	echo $instansi['nama'];
 	echo "<br>";
+	echo $instansi['kota'];
+	echo ",";
+	echo $instansi['notlp'];
 	echo "<br>";
 	echo "Dengan Hormat,";
 	echo"<br>";
@@ -39,7 +42,7 @@
 	echo$n." " .$barang[$x]."<br/>";  
 	$n++;     
  }
- 	echo "";
+ 	echo "Atas Perhatiannya saya ucapkan Terima kasih:";
  	echo "<br>";
  	echo "<br>";
  	echo "<br>";
