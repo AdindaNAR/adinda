@@ -33,6 +33,8 @@
 	echo ",";
 	echo $instansi['notlp'];
 	echo "<br>";
+	echo "<br>";
+	echo "<br>";
 	echo "Dengan Hormat,";
 	echo"<br>";
 	echo "Dalam rangka pelaksanaan kegiatan perlombaan antar prodi, di lingkungan kampus LP3I Tasikmalaya, Kami bermaksud meminjam beberapa barang, diantaranya sebagai berikut :";
