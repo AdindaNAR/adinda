@@ -1,12 +1,16 @@
-	<?php    
-	$tgl= date('d F Y');
+	<?php   
+	$con = new mysqli("localhost","root","","db_suratadinda");
+	$tgl = date('d F Y');
 	$kota = "Kota Tasikmalaya";
 	$barang= array('Buku','Pensil','Meja');
 	$instansi= array(
 				'nama'=>"LP3I",
 				'kota'=>"Tasikmalaya",
 				'notlp'=>"022-123-456");
-	$ttd = "Adinda Nur Aulia Rizki"
+	$ttd = "Adinda Nur Aulia Rizki";
+	
+if ($con) {
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -14,11 +18,32 @@
 	<title>Belajar Membuat Surat</title>
 </head>
 <body>
+<?php
+	$sql = "SELECT * FROM tbl_surat WHERE id = '2'";
+	//$query = mysqli_query($con, 'SELECT * FROM tbl_surat');
+	//$result = $con->query($sql);
 
-	<h3><center>Surat Permohonan</h3>
-	<hr/>
+	$isi = $result->fetch_assoc();
 
-	<?php   
+	echo $isi["jenis_surat"];
+
+		if($isi["jenis_surat"]="1"){
+			$js = "Surat Keputusan";
+		}
+		elseif($isi["jenis_surat"]="2"){
+			$js = "Surat Pernyataan";
+		}
+		elseif($isi["jenis_surat"]="3"){
+			$js = "Surat Peminjaman";
+		}
+		else($isi["jenis_surat"]="4"){
+			$js = "Kode Salah"
+		}
+
+
+
+	echo "<h3><center>" . $js . "</h3>";
+	echo "hr/";
 	echo "<br>";
 	echo "Nomor : 125 ";
 	echo "<br>";
@@ -57,3 +82,10 @@
  ?>
 </body> 
 </html>
+<?php
+
+}else{
+	die("Yahh! Koneksi database pertama gagal : " . mysqli_connect_error());
+}
+?>
+
