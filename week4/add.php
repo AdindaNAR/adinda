@@ -59,9 +59,26 @@ $result = $con->query($sql);
     <button type="Cancel" class="btn btn-danger">Cancel</button>
   </div>
 </form>
-            </div>  
-            </div>
-        </row>
+  </div>  
+  </div>
+  </row>
+  <?php
+  	if (isset($_POST['submit'])) {
+  		$no_surat = $_POST['noSurat'];//name/id kolom
+  		$jenis_surat = $POST['jenisSurat'];
+  		$tgl_surat = $POST['tglSurat'];
+  		$ttd_surat = $POST['ttdSurat'];
+  		$ttd_mengetahui = $POST['ttdMengetahui'];
+  		$ttd_menyetujui = $POST['ttdMenyetujui'];
+  		
+  		$result = mysqli_query($mysqli, "INSERT INTO tbl_surat
+  			(id,no_surat,jenis_surat,ttd_surat,ttd_mengetahui,ttd_menyetujui)VALUES('','$no_surat','$jenis_surat','$tgl_surat',
+  			'$tgl_surat','$ttd_mengetahui','$ttd_menyetujui')");
+
+  		//show message when user added
+  		echo "User added successfully.<a href='view.php'>List Surat</a>";
+  	}
+  ?>
 </body>
 		<script src="assets/js/bootstrap.min.js"</script>
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
