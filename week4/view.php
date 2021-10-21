@@ -19,47 +19,55 @@ $result = $con->query($sql);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="container">
-    <row>
-      <div class="container-fluid"></div>
-      <h1>List Surat</h1>
-    </row>
-    <table class="table">
-      <thead class="table-primary">
-        <td>No Surat</td>
-        <td>Jenis Surat</td>
-        <td>Tanggal Surat</td>
-        <td>TTD Surat</td>
-        <td>TTD Mengetahui</td>
-        <td>TTD Menyetujui</td>
-      </thead>
-    <?php
-      foreach ($qur as $isi) {
-        if ($isi["jenis_surat"]=='1') {
-          $js = "Surat Keputusan"
-        }
-        elseif ($isi["jenis_surat"]=='2') {
-          $js = "Surat Pernyataan"
-        }
-        elseif ($isi["jenis_surat"]=='3') {
-          $js = "Surat Peminjaman"
-        }
-        else {
-          $js = "Kode Bermasalah"
-        }
-        ?>
-      <tr>
-      <td><?= $val['no_surat'] ?></td>
-      <td><?= $js ?></td>
-      <td><?= $val['tgl_surat'] ?></td>
-      <td><?= $val['ttd_surat'] ?></td>
-      </tr>
-      }
+    <div class="main mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header bg-white text-uppercase">
+                            <div class="h3 text-center">Data Mahasiswa</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>No Surat</th>
+                                            <th>Jenis Surat</th>
+                                            <th>Tgl Surat</th>
+                                            <th>Ttd Surat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($result as $val) { ?>
+                                            <?php
+                                            if ($val['jenis_surat'] == 1) {
+                                                $js = 'Surat Keputusan';
+                                            } else if ($val['jenis_surat'] == 2) {
+                                                $js = 'Surat Persyaratan';
+                                            } else if ($val['jenis_surat'] == 3) {
+                                                $js = 'Surat Peminjaman';
+                                            } else {
+                                                $js = 'Kode Bermasalah';
+                                            }
+                                            ?>
+                                            <tr>
+                                                <td><?= $val['no_surat'] ?></td>
+                                                <td><?= $js ?></td>
+                                                <td><?= $val['tgl_surat'] ?></td>
+                                                <td><?= $val['ttd_surat'] ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-
-    ?>
-  </body>
   
 
     <script src="assets/js/bootstrap.min.js"</script>
