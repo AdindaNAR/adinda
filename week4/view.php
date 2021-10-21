@@ -7,7 +7,8 @@ $tgl = date('d F Y');
 
 $sql = "SELECT * FROM tbl_surat ";
 $result = $con->query($sql);
-  /*$isi = $result->fetch_assoc();*/
+$query = mysqli_query($con, 'SELECT * FROM tbl_surat');
+  $isi = $result->fetch_assoc();
 
 ?>
 <!DOCTYPE html>
@@ -39,23 +40,23 @@ $result = $con->query($sql);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($result as $val) { ?>
+                                        <?php foreach ($query as $isi) { ?>
                                             <?php
-                                            if ($val['jenis_surat'] == 1) {
+                                            if ($isi['jenis_surat'] == '1') {
                                                 $js = 'Surat Keputusan';
-                                            } else if ($val['jenis_surat'] == 2) {
+                                            } else if ($isi['jenis_surat'] == '2') {
                                                 $js = 'Surat Persyaratan';
-                                            } else if ($val['jenis_surat'] == 3) {
+                                            } else if ($isi['jenis_surat'] == '3') {
                                                 $js = 'Surat Peminjaman';
                                             } else {
                                                 $js = 'Kode Bermasalah';
                                             }
                                             ?>
                                             <tr>
-                                                <td><?= $val['no_surat'] ?></td>
+                                                <td><?= $isi['no_surat'] ?></td>
                                                 <td><?= $js ?></td>
-                                                <td><?= $val['tgl_surat'] ?></td>
-                                                <td><?= $val['ttd_surat'] ?></td>
+                                                <td><?= $isi['tgl_surat'] ?></td>
+                                                <td><?= $isi['ttd_surat'] ?></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
