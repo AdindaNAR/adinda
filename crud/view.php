@@ -32,12 +32,13 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_surat');
                             <div class="table-responsive">
                                 <table class="table table-striped w-100">
                                     <thead>
-                                        <tr>
-                                            <th>No Surat</th>
-                                            <th>Jenis Surat</th>
-                                            <th>Tgl Surat</th>
-                                            <th>Ttd Surat</th>
-                                        </tr>
+                                            <td>No Surat</td>
+                                            <td>Jenis Surat</td>
+                                            <td>Tgl Surat</td>
+                                            <td>Ttd Surat</td>
+                                            <td>Ttd Mengetahui</td>
+                                            <td>Ttd Menyetujui</td>
+                                            <td colspan="2">ACTION</td>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($query as $isi) { ?>
@@ -53,10 +54,15 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_surat');
                                             }
                                             ?>
                                             <tr>
-                                                <td><?= $isi['no_surat'] ?></td>
-                                                <td><?= $js ?></td>
-                                                <td><?= $isi['tgl_surat'] ?></td>
-                                                <td><?= $isi['ttd_surat'] ?></td>
+                                                <td><?php echo $isi['no_surat'] ?></td>
+                                                <td><?php echo $js ?></td>
+                                                <td><?php echo $isi['tgl_surat'] ?></td>
+                                                <td><?php echo $isi['ttd_surat'] ?></td>
+                                                <td><?php echo $isi['ttd_mengetahui'] ?></td>
+                                                <td><?php echo $isi['ttd_menyetujui'] ?></td>
+                                                <td><a href="edit.php?id=<?php echo $isi['id'];?>">Edit</a></td>
+                                                <td>Delete</td>
+
                                             </tr>
                                         <?php } ?>
                                     </tbody>
