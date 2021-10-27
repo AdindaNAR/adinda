@@ -78,7 +78,8 @@ $isi = $query->fetch_assoc();
   			 `no_surat` = '$no_surat',`jenis_surat` = '$jenis_surat',`tgl_surat` = '$tgl_surat',`ttd_surat` = '$ttd_surat',`ttd_mengetahui` = '$ttd_mengetahui',`ttd_menyetujui` = '$ttd_menyetujui' WHERE `id` = '$id'");
 
   		//show message when user added
-  		echo "Surat updated successfully.<a href='view.php'>List Surat</a>";
+  		//echo "Surat updated successfully.<a href='view.php'>List Surat</a>";
+      header("Location:view.php");
   	}
   ?>
 </body>
