@@ -61,19 +61,44 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_surat');
                                                 <td><?php echo $isi['ttd_mengetahui'] ?></td>
                                                 <td><?php echo $isi['ttd_menyetujui'] ?></td>
                                                 <td><a href="edit.php?id=<?php echo $isi['id'];?>">Edit</a></td>
-                                                <td>Delete</td>
-
+                                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#deletesurat<?php echo $isi['id'];?>">Delete
+                                                </a></td>
                                             </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                            <!-- modal delete -->
+                                            <div class="example-modal">
+                                                <div id="deletesurat<?php echo $isi['id'];?>" class="modal fade" role="dialog" style="display: none;">
+                                                    <div class = "modal-dialog">
+                                                    <div class="modal-content">
+                                                        <form class="row g-3" action="delete.php" method="POST" action="edit.php">
+                                                    <div class="modal-header">
+                                                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+                                                    <h3 class="modal-tittle">Konfirmasi Delete Data Surat</h3>
+                                                </div>
+                                                     <div class="modal-body">
+                                                        <input type="hidden" name="id" value="<?php echo $isi['id']?>">
+                                                        <h4 align="center">Apakah anda yakin ingin menghapus no surat<? echo $isi['no_surat'];?><strong><span class="grt"></span></strong>?></h4>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                    <button id="nodelete" type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Cancle</button>
+                                                     <button type="submit" class="btn btn-primary" name="delete">Delete</button>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                 </div>
+                                            </div>
+                                         </div>
+                                         <!-- modal delete -->
+                                    </div>
+                                    <?php }?>
+                                </tbody>
+                            </table>
+                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+ </div>
 
   
 
