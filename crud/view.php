@@ -22,6 +22,33 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_surat');
   <body>
     <div class="main mt-4">
         <div class="container">
+            <?php
+            $pesan = $_GET['pesan'];
+            $frm = $_GET['frm'];
+            /*echo $pesan;*/
+            if ($pesan=='success' &&  $frm == 'add') {
+                 ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+             <strong>Berhasil!</strong>Anda berhasil menambahkan data.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php 
+                } else if ($pesan=='success' &&  $frm == 'dell') {
+                 ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+             <strong>Berhasil!</strong>Anda berhasil menghapus data.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php 
+                } else if ($pesan=='success' &&  $frm == 'edit') {
+                 ?>
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+             <strong>Berhasil!</strong>Anda berhasil merubah data.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php 
+                }//ALERT SETTING AKHIR
+                    ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -38,7 +65,7 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_surat');
                                             <td>Ttd Surat</td>
                                             <td>Ttd Mengetahui</td>
                                             <td>Ttd Menyetujui</td>
-                                            <td colspan="2">ACTION</td>
+                                            <td colspan="2"><center>Action</td>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($query as $isi) { ?>
@@ -49,6 +76,11 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_surat');
                                                 $js = 'Surat Persyaratan';
                                             } else if ($isi['jenis_surat'] == '3') {
                                                 $js = 'Surat Peminjaman';
+                                            } else if ($isi['jenis_surat'] == '4') {
+                                                $js = 'Surat Nikah';
+                                            } else if ($isi['jenis_surat'] == '5') {
+                                                $js = 'Surat Kepemelikan';
+
                                             } else {
                                                 $js = 'Kode Bermasalah';
                                             }
@@ -60,9 +92,9 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_surat');
                                                 <td><?php echo $isi['ttd_surat'] ?></td>
                                                 <td><?php echo $isi['ttd_mengetahui'] ?></td>
                                                 <td><?php echo $isi['ttd_menyetujui'] ?></td>
-                                                <td><a href="edit.php?id=<?php echo $isi['id'];?>">Edit</a></td>
-                                                <td><a href="#" data-bs-toggle="modal" data-bs-target="#deletesurat<?php echo $isi['id'];?>">Delete
-                                                </a></td>
+                                                <td><a class="btn btn-warning" href="edit.php?id=<?php echo $isi['id'];?>">Edit</a></td>
+                                                <td><button class="btn btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#deletesurat<?php echo $isi['id'];?>">Delete
+                                                </button></td>
                                             </tr>
                                             <!-- modal delete -->
                                             <div class="example-modal">
@@ -79,8 +111,8 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_surat');
                                                         <h4 align="center">Apakah anda yakin ingin menghapus no surat<? echo $isi['no_surat'];?><strong><span class="grt"></span></strong>?></h4>
                                                     </div>
                                                     <div class="modal-footer">
-                                                    <button id="nodelete" type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Cancle</button>
-                                                     <button type="submit" class="btn btn-primary" name="delete">Delete</button>
+                                                    <button id="nodelete" type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal">Cancle</button>
+                                                     <button type="submit" class="btn btn-danger" name="delete">Delete</button>
                                                         </div>
                                                     </form>
                                                     </div>
@@ -99,10 +131,11 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_surat');
         </div>
     </div>
  </div>
-
+ <div class="text-center"> <h6>Ingin menambah surat?<a href="add.php">Klik disini!</a></h6></div>
+</body>
   
 
-    <script src="assets/js/bootstrap.min.js"</script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </html>
