@@ -1,14 +1,12 @@
 <?php
 error_reporting(0);
 //Buat Koneksinya
-$con = new mysqli("localhost","root","","db_suratadinda");
+$con = mysqli_connect("localhost","root","","db_suratadinda");
 
 $tgl = date('d F Y');
 
-$sql = "SELECT * FROM tbl_surat ";
-$result = $con->query($sql);
 	/*$isi = $result->fetch_assoc();*/
-
+$query = mysqli_query($con, 'SELECT * FROM tbl_jenis_surat');
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,10 +30,10 @@ $result = $con->query($sql);
   <div class="col-md-6">
     <label for="inputState" class="form-label">Jenis Surat</label>
     <select id="inputState" class="form-select" name="jenisSurat">
-      <option selected value="">Silahkan Pilih...</option>
-      <option value="1">Surat Keputusan</option>
-      <option value="2">Surat Pernyataan</option>
-      <option value="3">Surat Peminjaman</option>
+      <option selected value="" disabled="">Silahkan Pilih...</option>
+      <?php foreach ($query as $js){ ?>
+      <option value="<?=$js['id_js']?>"><?= $js['jenis_surat'] ?></option>
+      <?php } ?>
     </select>
   </div>
   <div class="col-6">
@@ -75,11 +73,11 @@ $result = $con->query($sql);
   			(`id`,`no_surat`,`jenis_surat`,`tgl_surat`,`ttd_surat`,`ttd_mengetahui`,`ttd_menyetujui`) VALUES (NULL,'$no_surat','$jenis_surat','$tgl_surat','$ttd_surat','$ttd_mengetahui','$ttd_menyetujui')");
 
   		//show message when user added
-  		echo "User added successfully.<a href='view.php'>List Surat</a>";
+  		header("Location:view.php?pesan=success&frm=add");
   	}
   ?>
 </body>
-		<script src="assets/js/bootstrap.min.js"</script>
+		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </html>
