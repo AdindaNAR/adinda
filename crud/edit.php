@@ -79,7 +79,7 @@ $isi = $query->fetch_assoc();
 
   		//show message when user added
   		//echo "Surat updated successfully.<a href='view.php'>List Surat</a>";
-      header("Location:view.php");
+      header("Location:view.php?pesan=success&frm=edit");
   	}
   ?>
 </body>
