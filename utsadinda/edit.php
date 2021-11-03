@@ -34,7 +34,7 @@ $isi = $query->fetch_assoc();
   <div class="col-md-6">
     <label for="inputPosisi" class="form-label">Posisi Pegawai</label>
     <select id="posisiPegawai" class="form-select" name="posisiPegawai">
-      <option selected value="<?php echo $gaji['posisi_pegawai'] ?>"><?php echo $gaj ?></option>
+      <option selected value="<?php echo $gaji['posisi_pegawai'] ?>"><?php echo $gaji ?></option>
       <option value="Staff">Staff</option>
       <option value="Supervisor">Supervisor</option>
       <option value="Manajer">Manajer</option>
