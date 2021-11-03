@@ -14,7 +14,7 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_pegawai');
 <!DOCTYPE html>
 <html>
   <head>
-    <title>View Data Pegawai</title>
+    <title>List Data Pegawai</title>
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -106,7 +106,7 @@ $query = mysqli_query($con, 'SELECT * FROM tbl_pegawai');
                                                 </div>
                                                      <div class="modal-body">
                                                         <input type="hidden" name="id" value="<?php echo $isi['id']?>">
-                                                        <h4 align="center">Apakah anda yakin ingin menghapus data? <? echo $isi['no_surat'];?><strong><span class="grt"></span></strong>?></h4>
+                                                        <h4 align="center">Apakah anda yakin ingin menghapus data<? echo $isi['no_surat'];?><strong><span class="grt"></span></strong>?<h4>
                                                     </div>
                                                     <div class="modal-footer">
                                                     <button id="nodelete" type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal">Cancle</button>
