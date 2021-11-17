@@ -4,6 +4,7 @@ include '../controller/Pegawai.php';
 $ctrl = new Pegawai();
 $id = $_GET['id'];
 $isi = $ctrl->getData($id);
+$posisi = $ctrl->getJenisData(); 
 
 ?>
 <!DOCTYPE html>
@@ -32,9 +33,13 @@ $isi = $ctrl->getData($id);
     <label for="inputPosisi" class="form-label">Posisi Pegawai</label>
     <select id="posisiPegawai" class="form-select" name="posisiPegawai">
       <option selected value="<?php echo $gaji['posisi_pegawai'] ?>"><?= $isi['posisi_pegawai'] ?></option>
-      <option value="Staff">Staff</option>
-      <option value="Supervisor">Supervisor</option>
-      <option value="Manajer">Manajer</option>
+       <?php
+        foreach ($posisi as $pp) {
+      ?>
+        <option value = "<?= $pp['id_pp'] ?>"><?= $pp['posisi_pegawai'] ?></option>
+      <?php
+        } 
+      ?>
     </select>
   </div>
   <div class="col-6">
@@ -51,7 +56,7 @@ $isi = $ctrl->getData($id);
   </div>
   <div class="col-12">
     <button type="submit" class="btn btn-primary" name="update">Update</button>
-    <button type="Cancel" class="btn btn-danger">Cancel</button>
+    <a href = "content.php" class="btn btn-danger">Cancel</a>
   </div>
 </form>
   </div>  
