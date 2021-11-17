@@ -13,10 +13,82 @@ class Pegawai{
 
 	function index(){	//function index = pertama kali diakses
 
-		$hasil = $this->model->tampil_data();
+		$pegawai = $this->model->tampil_data();
 
-		return $hasil;
+		return $pegawai;
 	}
+
+	function getData($id){
+		$pegawai = $this->model->getData($id);
+		return $pegawai;
+	}
+
+	function getJenisData(){
+		$posisiPegawai = $this->model->getJenisData();
+		return $posisiPegawai;
+	}
+
+	function hapusPegawai(){
+		if (isset($_POST['delete'])) {
+			$id = $_POST['id'];
+
+			$result = $this->model->hapusData($id);
+			if($result){
+				header("Location:index.php?pesan=success&frm=del");
+			}else{
+				header("Location:index.php?pesan=gagal&frm=del");
+			}
+		}
+	}
+
+	function simpanPegawai(){
+		if(isset($_POST['simpan'])){
+  		$kd_pegawai = $_POST['kdPegawai'];
+      	$nama_pegawai = $_POST['namaPegawai'];//name/id kolom
+  		$posisi_pegawai = $_POST['posisiPegawai'];
+  		$alamat_pegawai = $_POST['alamatPegawai'];
+  		$no_telp = $_POST['noTelp'];
+
+  		$data[] = array(
+  			'kd_pegawai' => $kd_pegawai,
+  			'nama_pegawai' => $nama_pegawai,
+  			'posisi_pegawai' => $posisi_pegawai,
+  			'alamat_pegawai' => $alamat_pegawai,
+  			'no_telp' => $no_telp
+  		);
+  		$result = $this->model->simpanData($data);
+  			if($result){
+  				header("Location:index.php?pesan=success&frm=add");
+  			}else{
+  				header("Location:index.php?pesan=gagal&frm=add");
+  			}
+		}
+	}
+
+	function updatePegawai(){
+		if(isset($_POST['update'])){
+  		$kd_pegawai = $_POST['kdPegawai'];
+      	$nama_pegawai = $_POST['namaPegawai'];//name/id kolom
+  		$posisi_pegawai = $_POST['posisiPegawai'];
+  		$alamat_pegawai = $_POST['alamatPegawai'];
+  		$no_telp = $_POST['noTelp'];
+
+  		$data[] = array(
+  			'kd_pegawai' => $kd_pegawai,
+  			'nama_pegawai' => $nama_pegawai,
+  			'posisi_pegawai' => $posisi_pegawai,
+  			'alamat_pegawai' => $alamat_pegawai,
+  			'no_telp' => $no_telp
+  		);
+  		$result = $this->model->updateData($data,$id);
+  			if($result){
+  				header("Location:index.php?pesan=success&frm=add");
+  			}else{
+  				header("Location:index.php?pesan=gagal&frm=add");
+  			}
+  		}
+	}
+
 }
 
 ?>
