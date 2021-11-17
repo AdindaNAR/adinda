@@ -26,7 +26,7 @@ $hasil= $ctrl->index();
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <a class="btn btn-primary" href="add.php?id=<?php echo $isi['id'];?>">Add Data</a>
+                                <a class="btn btn-primary" href="add.php">Add Data</a>
                                 <table class="table table-striped w-100">
                                     <thead>
                                             <th>NIP</th>
