@@ -34,9 +34,9 @@ class Pegawai{
 
 			$result = $this->model->hapusData($id);
 			if($result){
-				header("Location:index.php?pesan=success&frm=del");
+				header("Location:content.php?pesan=success&frm=del");
 			}else{
-				header("Location:index.php?pesan=gagal&frm=del");
+				header("Location:content.php?pesan=gagal&frm=del");
 			}
 		}
 	}
@@ -58,14 +58,14 @@ class Pegawai{
   		);
   		$result = $this->model->simpanData($data);
   			if($result){
-  				header("Location:index.php?pesan=success&frm=add");
+  				header("Location:content.php?pesan=success&frm=add");
   			}else{
-  				header("Location:index.php?pesan=gagal&frm=add");
+  				header("Location:content.php?pesan=gagal&frm=add");
   			}
 		}
 	}
 
-	function updatePegawai(){
+	function updatePegawai($id){
 		if(isset($_POST['update'])){
   		$kd_pegawai = $_POST['kdPegawai'];
       	$nama_pegawai = $_POST['namaPegawai'];//name/id kolom
@@ -73,7 +73,7 @@ class Pegawai{
   		$alamat_pegawai = $_POST['alamatPegawai'];
   		$no_telp = $_POST['noTelp'];
 
-  		$data[] = array(
+  		$data = array(
   			'kd_pegawai' => $kd_pegawai,
   			'nama_pegawai' => $nama_pegawai,
   			'posisi_pegawai' => $posisi_pegawai,
@@ -82,9 +82,9 @@ class Pegawai{
   		);
   		$result = $this->model->updateData($data,$id);
   			if($result){
-  				header("Location:index.php?pesan=success&frm=add");
+  				header("Location:content.php?pesan=success&frm=add");
   			}else{
-  				header("Location:index.php?pesan=gagal&frm=add");
+  				header("Location:content.php?pesan=gagal&frm=add");
   			}
   		}
 	}
