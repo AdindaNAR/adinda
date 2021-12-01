@@ -37,16 +37,23 @@ class Pegawai_model{
 		//list nama kolom
 		$columnNames = array_keys($data[0]);
 		//looping untuk mengambil isi dari kolom / values
-		foreach($row as $columnNames => $columnValue){
+		foreach($data as $arrayIndex => $row){
+			$params = array();
+		foreach($row as $columnName => $columnValue){
 			$param = ":" . $columnName . $arrayIndex;
 			$params[] = $param;
-			$toBind[$param] - $columnValue; 
+			$toBind[$param] = $columnValue; 
 		}
-		$rowsSQL[] = "(" . implode(",", $columnNames) . ") VALUES" . implode(",", $rowsSQL);
+		$rowsSQL[] = "(" . implode(", ", $params) . ")";
+	}
+		$sql = "INSERT INTO tbl_pegawai (". implode(", ", $columnNames).") VALUES " . implode(", ", $rowsSQL);
 		$row = $this->db->prepare($sql);
+		//Bind Our Values
 		foreach ($toBind as $param => $val) {
 			$row -> bindValue($param, $val);
 		}
+		//execute our statement(i.e. insert the data)
+		return $row->execute();
 	}
 
 		function updateData($data,$id)
