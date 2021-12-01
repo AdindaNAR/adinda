@@ -68,7 +68,7 @@ $hasil= $ctrl->index();
                                                 <div id="deletedata<?php echo $isi['id'];?>" class="modal fade" role="dialog" style="display: none;">
                                                     <div class = "modal-dialog">
                                                     <div class="modal-content">
-                                                        <form class="row g-3" action="delete.php" method="POST" action="edit.php">
+                                                        <form class="row g-3" action="<?php $ctrl->hapusPegawai()?>"  method="POST" action="edit.php">
                                                     <div class="modal-header">
                                                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
                                                     <h3 class="modal-tittle">Konfirmasi Delete Data Pegawai</h3>
