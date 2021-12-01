@@ -21,7 +21,7 @@ $posisi = $ctrl->getJenisData();
             <div class="card">
             <h2 align="center">Edit Data Pegawai</h2>
             <div class="card-body">
-                <form class="row g-3" method="POST" action="edit.php">
+                <form class="row g-3" method="POST" action="<?php echo $ctrl->updatePegawai($isi['id']) ?>">
                  <div class="col-md-12">
                         <input type="hidden" class="form-control" name="id" value="<?php echo $isi['id']?>">
                     </div>
@@ -32,11 +32,11 @@ $posisi = $ctrl->getJenisData();
   <div class="col-md-6">
     <label for="inputPosisi" class="form-label">Posisi Pegawai</label>
     <select id="posisiPegawai" class="form-select" name="posisiPegawai">
-      <option selected value="<?php echo $gaji['posisi_pegawai'] ?>"><?= $isi['posisi_pegawai'] ?></option>
+      <option value = "<?= $isi['posisi_pegawai'] ?>"><?= $isi['posisi_pegawai'] ?></option>
        <?php
         foreach ($posisi as $pp) {
       ?>
-        <option value = "<?= $pp['id_pp'] ?>"><?= $pp['posisi_pegawai'] ?></option>
+        <option value = "<?= $pp['posisi_pegawai'] ?>"><?= $pp['posisi_pegawai'] ?></option>
       <?php
         } 
       ?>
@@ -84,3 +84,8 @@ $posisi = $ctrl->getJenisData();
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 </html>
+
+
+
+
+
