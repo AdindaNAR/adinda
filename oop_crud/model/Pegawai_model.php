@@ -63,7 +63,7 @@ class Pegawai_model{
 			{
 				$setPart[] = $key. "=:" .$key;
 			}
-			$sql = "UPDATE tbl_pegawai SET ".implode(', ', $setPart)."WHERE id = :id";
+			$sql = "UPDATE tbl_pegawai SET ".implode(', ', $setPart)." WHERE id = :id";
 			$row = $this->db->prepare($sql);
 			//Bind our values
 			$row->bindValue(':id',$id);//where
