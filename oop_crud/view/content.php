@@ -92,6 +92,7 @@ $hasil= $ctrl->index();
                                 </tbody>
                             </table>
                          </div>
+                          <button  type="submit" class="btn btn-warning" name="logout">Logout</button>
                     </div>
                 </div>
             </div>
