@@ -10,12 +10,14 @@ class Pegawai{
 		$this->model = new Pegawai_model($conn);
 		//menghilangkan pesan error
 	}
-
-	function index(){	//function index = pertama kali diakses
-
-		$pegawai = $this->model->tampil_data();
-
-		return $pegawai;
+	function index(){
+		session_start();
+		if (!empty($_SESSION)) {//session = untuk menyimpan data temporary
+			$pegawai = $this->model->tampil_data();
+			return $pegawai;
+		}else{
+			header("Location:index.php");
+		}
 	}
 
 	function getData($id){
@@ -82,11 +84,18 @@ class Pegawai{
   		);
   		$result = $this->model->updateData($data,$id);
   			if($result){
-  				header("Location:content.php?pesan=success&frm=add");
+  				header("Location:content.php?pesan=success&frm=edit");
   			}else{
-  				header("Location:content.php?pesan=gagal&frm=add");
+  				header("Location:content.php?pesan=gagal&frm=edit");
   			}
   		}
+	}
+	function logout(){
+		if (isset($_POST['logout'])) {
+			session_start();
+			session_destroy();
+			header("Location:index.php?pesan=success&frm=logout");	
+		}
 	}
 
 }
