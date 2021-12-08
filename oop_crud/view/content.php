@@ -16,8 +16,63 @@ $hasil= $ctrl->index();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </head>
   <body>
+    <div class="example-modal">
+         <div id="logout" class="modal fade" role="dialog" style="display: none;">
+                <div class = "modal-dialog">
+                <div class="modal-content">
+                <form class="row g-3" action="<?php echo $ctrl->logout()?>"  method="POST" name="form1">
+                <div class="modal-header">
+                    <h3 class="modal-tittle">Log Out</h3>
+                    </div>
+                    <div class="modal-body">
+                    <h5 align="center">Apakah anda yakin ingin keluar?<strong><span class="grt"></span></strong><h5>
+                    </div>
+                    <div class="modal-footer">
+                    <button id="nologout" type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger" name="logout">Logout</button>
+                    </div>
+                 </form>
+                </div>
+                </div>
+        </div>
+    </div>
+             <!-- modal logout -->
     <div class="main mt-4">
         <div class="container">
+            <?php
+            $pesan = $_GET['pesan'];
+            $frm = $_GET['frm'];
+            /*echo $pesan;*/
+            if ($pesan=='success' &&  $frm == 'add') {
+                 ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+             <strong>Berhasil!</strong>Anda berhasil menambahkan data.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php 
+                } else if ($pesan=='success' &&  $frm == 'del') {
+                 ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+             <strong>Berhasil!</strong>Anda berhasil menghapus data.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php 
+                } else if ($pesan=='success' &&  $frm == 'edit') {
+                 ?>
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+             <strong>Berhasil!</strong>Anda berhasil merubah data.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php 
+                }elseif($pesan=='success' &&  $frm == 'login') {
+                 ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+             <strong>Berhasil!</strong>Anda berhasil login.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <?php 
+                    }//ALERT SETTING AKHIR
+                    ?>
         	<div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -60,15 +115,15 @@ $hasil= $ctrl->index();
                                                 <td><?php echo $isi['alamat_pegawai'] ?></td>
                                                 <td><?php echo $isi['no_telp'] ?></td>
                                                 <td><a class="btn btn-warning" href="edit.php?id=<?php echo $isi['id'];?>">Edit</a></td>
-                                                <td><button class="btn btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#deletedata<?php echo $isi['id'];?>">Delete
+                                                <td><button class="btn btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#deletedat0a<?php echo $isi['id'];?>">Delete
                                                 </button></td>
                                             </tr>
-                                            <!-- modal delete -->
+                                         <!-- modal delete -->
                                             <div class="example-modal">
                                                 <div id="deletedata<?php echo $isi['id'];?>" class="modal fade" role="dialog" style="display: none;">
                                                     <div class = "modal-dialog">
                                                     <div class="modal-content">
-                                                        <form class="row g-3" action="<?php $ctrl->hapusPegawai()?>"  method="POST" action="edit.php">
+                                                        <form class="row g-3" action="<?php $ctrl->hapusPegawai()?>" method="POST">
                                                     <div class="modal-header">
                                                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
                                                     <h3 class="modal-tittle">Konfirmasi Delete Data Pegawai</h3>
@@ -78,7 +133,7 @@ $hasil= $ctrl->index();
                                                         <h4 align="center">Apakah anda yakin ingin menghapus data<? echo $isi['no_surat'];?><strong><span class="grt"></span></strong>?<h4>
                                                     </div>
                                                     <div class="modal-footer">
-                                                    <button id="nodelete" type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal">Cancle</button>
+                                                    <button id="nodelete" type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal">Cancel</button>
                                                      <button type="submit" class="btn btn-danger" name="delete">Delete</button>
                                                         </div>
                                                     </form>
@@ -92,7 +147,7 @@ $hasil= $ctrl->index();
                                 </tbody>
                             </table>
                          </div>
-                          <button  type="submit" class="btn btn-warning" name="logout">Logout</button>
+                         <a class="btn btn-secondary action-button" role="button" href="#" data-bs-toggle="modal" data-bs-target="#logout">Log Out</a>
                     </div>
                 </div>
             </div>
