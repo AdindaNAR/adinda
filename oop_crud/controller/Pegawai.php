@@ -27,7 +27,7 @@ class Pegawai{
 
 	function getJenisData(){
 		$posisiPegawai = $this->model->getJenisData();
-		return $posisiPegawai;
+		echo json_encode($posisiPegawai);
 	}
 
 	function hapusPegawai(){
@@ -66,6 +66,18 @@ class Pegawai{
   			}
 		}
 	}
+function simpanPosisiPegawai(){
+  		$posisi_pegawai = $_POST['posisiPegawai'];
+  		$data[] = array(
+  			'posisi_pegawai' => $posisi_pegawai,
+  		);
+  		$result = $this->model->simpanPosisiData($data);
+  			if($result){
+  				echo'200';
+  			}else{
+  				echo'300';
+  			}
+		}
 
 	function updatePegawai($id){
 		if(isset($_POST['update'])){
