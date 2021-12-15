@@ -16,26 +16,6 @@ $hasil= $ctrl->index();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="example-modal">
-         <div id="logout" class="modal fade" role="dialog" style="display: none;">
-                <div class = "modal-dialog">
-                <div class="modal-content">
-                <form class="row g-3" action="<?php echo $ctrl->logout()?>"  method="POST" name="form1">
-                <div class="modal-header">
-                    <h3 class="modal-tittle">Log Out</h3>
-                    </div>
-                    <div class="modal-body">
-                    <h5 align="center">Apakah anda yakin ingin keluar?<strong><span class="grt"></span></strong><h5>
-                    </div>
-                    <div class="modal-footer">
-                    <button id="nologout" type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger" name="logout">Logout</button>
-                    </div>
-                 </form>
-                </div>
-                </div>
-        </div>
-    </div>
              <!-- modal logout -->
     <div class="main mt-4">
         <div class="container">
@@ -81,7 +61,7 @@ $hasil= $ctrl->index();
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <a class="btn btn-primary" href="add.php">Add Data</a>
+                                <a class="btn btn-primary" href="tambah.php">Add Data</a>
                                 <table class="table table-striped w-100">
                                     <thead>
                                             <th>NIP</th>
@@ -115,7 +95,7 @@ $hasil= $ctrl->index();
                                                 <td><?php echo $isi['alamat_pegawai'] ?></td>
                                                 <td><?php echo $isi['no_telp'] ?></td>
                                                 <td><a class="btn btn-warning" href="edit.php?id=<?php echo $isi['id'];?>">Edit</a></td>
-                                                <td><button class="btn btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#deletedat0a<?php echo $isi['id'];?>">Delete
+                                                <td><button class="btn btn-danger" href="#" data-bs-toggle="modal" data-bs-target="#deletedata<?php echo $isi['id'];?>">Delete
                                                 </button></td>
                                             </tr>
                                          <!-- modal delete -->
@@ -147,6 +127,26 @@ $hasil= $ctrl->index();
                                 </tbody>
                             </table>
                          </div>
+                         <div class="example-modal">
+                <div id="logout" class="modal fade" role="dialog" style="display: none;">
+                <div class = "modal-dialog">
+                <div class="modal-content">
+                <form class="row g-3" action="<?php echo $ctrl->logout()?>"  method="POST" name="form1">
+                <div class="modal-header">
+                    <h3 class="modal-tittle">Log Out</h3>
+                    </div>
+                    <div class="modal-body">
+                    <h5 align="center">Apakah anda yakin ingin keluar?<strong><span class="grt"></span></strong><h5>
+                    </div>
+                    <div class="modal-footer">
+                    <button id="nologout" type="button" class="btn btn-primary pull-left" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger" name="logout">Logout</button>
+                    </div>
+                 </form>
+                </div>
+                </div>
+        </div>
+    </div>
                          <a class="btn btn-secondary action-button" role="button" href="#" data-bs-toggle="modal" data-bs-target="#logout">Log Out</a>
                     </div>
                 </div>
